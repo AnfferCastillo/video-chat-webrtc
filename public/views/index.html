@@ -24,9 +24,11 @@
                         <div class="col-xl-6">
                             <div class="card mb-4">
                                 <div class="card-header" id="userbox-1"><i class="fas fa-user mr-1"></i><span
-                                        id="username-1"></span>
-                                    <button id="stop-video" type="button" class="btn btn-sm btn-danger float-right">Parar Video</button>
-                                    <button id="start-video" type="button" class="btn btn-sm btn-primary float-right">Iniciar Video</button>
+                                        id="username-label"></span>
+                                    <button id="stop-video" type="button"
+                                        class="btn btn-sm btn-danger float-right">Parar Video</button>
+                                    <button id="start-video" type="button"
+                                        class="btn btn-sm btn-primary float-right">Iniciar Video</button>
                                 </div>
                                 <div class="card-body">
                                     <video id="my-video"></video>
@@ -35,7 +37,7 @@
                         </div>
                         <div class="col-xl-6">
                             <div class="card mb-4">
-                                <div class="card-header" id="userbox-2"><i class="fas fa-user mr-1"></i>Username 2</div>
+                                <div class="card-header" id="userbox-2"><i class="fas fa-user mr-1"></i><span id="guestname-label"></span></div>
                                 <div class="card-body">
                                     <video id="guest-video"></video>
                                 </div>
@@ -46,20 +48,39 @@
                         <div class="col-xl-4">
                             <div class="card mb-4">
                                 <div class="card-header"><i class="fas fa-user mr-1"></i>Usuarios conectados
-                                    <button id="invite-chat" type="button" class="btn btn-sm btn-primary float-right">invitar</button>
+                                    <button id="invite-chat" type="button"
+                                        class="btn btn-sm btn-primary float-right">invitar</button>
                                 </div>
                                 <div class="card-body" id="connected-users-box"></div>
                             </div>
                         </div>
                         <div class="col-xl-8">
+                            <div class="modal fade" id="invitation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                        <i class="fas fa-warning mr-1"></i>Invitatcion
+                                    </div>
+                                    <div class="modal-body">
+                                        <p id="invitation-text" class="text-justify"></p>
+                                    </div>
+                                    <div class="modal-footer">  
+                                        <button id="accept-btn" class="btn btn-primary">Aceptar</button>
+                                        <button id="reject-btn" class="btn btn-danger">Rechazar</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             <div class="card mb-4">
-                                <div class="card-header"><i class="fas fa-comments mr-1"></i>Chat</div>
+                                <div class="card-header"><i class="fas fa-comments mr-1"></i>Chat <span id="chat-room"></span></div>
                                 <div class="card-body" id="chat-box"></div>
                                 <div class="card-footer">
                                     <div class="input-group mb-3">
-                                        <input id="chat-msg" type="text" class="form-control" aria-describedby="button-addon2">
+                                        <input id="chat-input" type="text" class="form-control"
+                                            aria-describedby="button-addon2">
                                         <div class="input-group-append">
-                                            <button id="send-btn" class="btn btn-outline-secondary" type="button">Enviar</button>
+                                            <button id="send-btn" class="btn btn-outline-secondary"
+                                                type="button">Enviar</button>
                                         </div>
                                     </div>
                                 </div>
