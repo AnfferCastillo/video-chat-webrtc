@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>WebRTC Video-Chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4">WebRTC - Videochat</h1>
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header" id="userbox-1"><i class="fas fa-user mr-1"></i><span
+                                        id="username-1"></span>
+                                    <button id="stop-video" type="button" class="btn btn-sm btn-danger float-right">Parar Video</button>
+                                    <button id="start-video" type="button" class="btn btn-sm btn-primary float-right">Iniciar Video</button>
+                                </div>
+                                <div class="card-body">
+                                    <video id="my-video"></video>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header" id="userbox-2"><i class="fas fa-user mr-1"></i>Username 2</div>
+                                <div class="card-body">
+                                    <video id="guest-video"></video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-user mr-1"></i>Usuarios conectados
+                                    <button id="invite-chat" type="button" class="btn btn-sm btn-primary float-right">invitar</button>
+                                </div>
+                                <div class="card-body" id="connected-users-box"></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8">
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-comments mr-1"></i>Chat</div>
+                                <div class="card-body" id="chat-box"></div>
+                                <div class="card-footer">
+                                    <div class="input-group mb-3">
+                                        <input id="chat-msg" type="text" class="form-control" aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button id="send-btn" class="btn btn-outline-secondary" type="button">Enviar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/socket.io.slim.js"></script>
+    <script src="js/chat-client.js"></script>
+</body>
+
+</html>

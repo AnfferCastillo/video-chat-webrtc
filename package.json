@@ -1,0 +1,30 @@
+{
+  "name": "video-chat-webrtc",
+  "version": "1.0.0",
+  "description": "A simple video chat app using WebRTC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnfferCastillo/video-chat-webrtc.git"
+  },
+  "keywords": [
+    "WebRTC",
+    "video",
+    "chat"
+  ],
+  "author": "Anffer Castillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnfferCastillo/video-chat-webrtc/issues"
+  },
+  "homepage": "https://github.com/AnfferCastillo/video-chat-webrtc#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "socket.io": "^2.3.0"
+  }
+}
