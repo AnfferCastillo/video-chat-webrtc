@@ -50,7 +50,23 @@ io.on('connection', (socket) => {
         socket.join(data.room);
     });
 
+    socket.on('signaling-offer', (data) => {
+        console.log('signaling-offer', data);
+        socket.to(connectedUsers[data.to]).emit('signaling-offer', {...data.offer});
+    });
+
+    socket.on('signaling-answer', (data) => {
+        console.log('signaling-answer', data);
+        socket.to(connectedUsers[data.to]).emit('signaling-answer', {...data.answer});
+    });
+
+    socket.on('signaling-icecandidate', (data) => {
+        console.log('signaling-icecandidate', data);
+        socket.to(connectedUsers[data.to]).emit('signaling-icecandidate', {...data.candidate});
+    });
+
     socket.on('message', (data, fn) => {
+        console.log(data);
         socket.to(connectedUsers[data.to]).emit('message', data);
         fn(data);
     });

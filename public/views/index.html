@@ -27,11 +27,13 @@
                                         id="username-label"></span>
                                     <button id="stop-video" type="button"
                                         class="btn btn-sm btn-danger float-right">Parar Video</button>
+                                    <button id="call-btn" type="button"
+                                        class="btn btn-sm btn-primary float-right">Llamar</button>
                                     <button id="start-video" type="button"
                                         class="btn btn-sm btn-primary float-right">Iniciar Video</button>
                                 </div>
                                 <div class="card-body">
-                                    <video id="my-video"></video>
+                                    <video id="my-video" autoplay playsinline controls="false" style="width: 100%; height: auto;"></video>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +41,7 @@
                             <div class="card mb-4">
                                 <div class="card-header" id="userbox-2"><i class="fas fa-user mr-1"></i><span id="guestname-label"></span></div>
                                 <div class="card-body">
-                                    <video id="guest-video"></video>
+                                    <video id="guest-video" autoplay playsinline controls="false" style="width: 100%; height: auto;"></video>
                                 </div>
                             </div>
                         </div>
