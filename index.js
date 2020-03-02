@@ -13,6 +13,8 @@ io.on('connection', (socket) => {
     if(!!connectedUsers[socket.handshake.query.user] === false) {
         connectedUsers[socket.handshake.query.user] = socket.id;
     }
+
+    socket.join('default-room');
     
     io.emit('user-connected', { users: connectedUsers })
 
@@ -27,47 +29,23 @@ io.on('connection', (socket) => {
         io.emit('user-disconnect', {user: user})
     });
 
-    socket.on('invite', (data) => {
-        socket.to(connectedUsers[data.invited]).emit('user-invitation', { user: data.inviter });
-    });
-
-    socket.on('invitation-accepted', (data, fn) => {
-        const room = new Date().getTime();
-        chatRooms[room] = {
-            user1: data.invited,
-            user2: data.inviter
-        };
-        socket.join(room);
-        socket.to(connectedUsers[data.inviter]).emit('invitation-answer-yes', {room: room});
-        fn(room);
-    });
-
-    socket.on('invitation-rejected', (data) => {
-        socket.to(connectedUsers[data.inviter]).emit('invitation-answer-no');
-    });
-
-    socket.on('join-room', (data) => {
-        socket.join(data.room);
-    });
-
     socket.on('signaling-offer', (data) => {
         console.log('signaling-offer', data);
-        socket.to(connectedUsers[data.to]).emit('signaling-offer', {...data.offer});
+        socket.to('default-room').emit('signaling-offer', {...data.offer});
     });
 
     socket.on('signaling-answer', (data) => {
         console.log('signaling-answer', data);
-        socket.to(connectedUsers[data.to]).emit('signaling-answer', {...data.answer});
+        socket.to('default-room').emit('signaling-answer', {...data.answer});
     });
 
     socket.on('signaling-icecandidate', (data) => {
         console.log('signaling-icecandidate', data);
-        socket.to(connectedUsers[data.to]).emit('signaling-icecandidate', {...data.candidate});
+        socket.to('default-room').emit('signaling-icecandidate', {...data.candidate});
     });
 
     socket.on('message', (data, fn) => {
-        console.log(data);
-        socket.to(connectedUsers[data.to]).emit('message', data);
+        socket.to('default-room').emit('message', data);
         fn(data);
     });
 });
