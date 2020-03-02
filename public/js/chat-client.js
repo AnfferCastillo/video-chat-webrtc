@@ -61,6 +61,7 @@
 
     function _createPeerConnection() {
         _peerConnection = new RTCPeerConnection(configuration);
+        _peerConnection.addStream(_stream);
         _peerConnection.addEventListener('icecandidate', event => {
             console.log({onIceCandidate: event});
             !!event.candidate && _socket.emit('signaling-icecandidate', { candidate: event.candidate });
@@ -68,10 +69,6 @@
         
         _peerConnection.addEventListener('connectionstatechange',(event) => {
             console.log({perrConnectionState:  _peerConnection.iceConnectionState});
-            if (_peerConnection.iceConnectionState !== "failed" &&
-                _peerConnection.iceConnectionState !== "disconnected" &&
-                _peerConnection.iceConnectionState !== "closed") {
-            }
           });
 
         _remoteVideoStream = new MediaStream();
@@ -89,7 +86,6 @@
             offerToReceiveVideo: 1
           });    
         await _peerConnection.setLocalDescription(offer);
-        _peerConnection.addTrack(_currentVideoStream, _stream)
         _socket.emit('signaling-offer', { offer: offer });
             
     }
